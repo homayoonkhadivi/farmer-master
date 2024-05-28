@@ -49,5 +49,5 @@ jobs:
           echo "### Contents of report.md"
           cat report.md
           
-          # Step 10: Send the report as a comment to the PR using CML
+          # Step 10: Send the report as a comment to the PR using CML.
           cml comment create report.md --token $GITHUB_TOKEN
