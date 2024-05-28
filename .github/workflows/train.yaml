@@ -42,7 +42,7 @@ jobs:
           # Step 7: Generate metrics difference report
           dvc metrics diff > report.md
           
-          # Step 8: Add images to the report
+          # Step 8: Add images to the report.
           echo "![By Region](by_region.png)" >> report.md
           
           # Step 9: Debug: Output the content of report.md
