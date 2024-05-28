@@ -20,22 +20,27 @@ jobs:
         env:
           MY_PERSONAL_TOKEN: ${{ secrets.MY_PERSONAL_TOKEN }}
         run: |
+          # Step 1: Install dependencies
           pip install -r requirements.txt
+          # Step 2: Reproduce the pipeline
           dvc repro
-
-          # Debug: List files in the current directory
+          
+          # Step 3: Debug: List files in the current directory
           echo "### Files in the current directory after training"
           ls -la
+          
+          # Step 4: Fetch the latest changes from the remote repository and prune deleted branches
           git fetch --prune
+          
+          # Step 5: Generate metrics difference report
           dvc metrics diff --show-md master > report.md
-         
-          # Add images to the report using the new syntax
+          
+          # Step 6: Add images to the report
           echo "![By Region](by_region.png)" >> report.md
-  
-
-          # Debug: Output the content of report.md
+          
+          # Step 7: Debug: Output the content of report.md
           echo "### Contents of report.md"
           cat report.md
-
-          # Send the report as a comment to the PR
+          
+          # Step 8: Send the report as a comment to the PR using CML
           cml comment create report.md --token $MY_PERSONAL_TOKEN
