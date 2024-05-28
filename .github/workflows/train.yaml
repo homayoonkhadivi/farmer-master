@@ -44,7 +44,7 @@ jobs:
           
           # Step 8: Add images to the report
           echo "![By Region](by_region.png)" >> report.md
-          
+
           # Step 9: Debug: Output the content of report.md
           echo "### Contents of report.md"
           cat report.md
